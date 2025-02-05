@@ -2,11 +2,11 @@ import dbConnect from "@/database/dbConnect";
 import Product from "@/database/models/porduct.model";
 import React from "react";
 import CustomCard from "./Card";
+import { STATUS_CODES } from "http";
 
-const AllProducts = async ({ href }: { href: string }) => {
+const AllProducts = async () => {
   await dbConnect();
   const products = await Product.find();
-
   return (
     <ul className="w-full flex gap-10 flex-wrap items-center justify-center ">
       {products.map((shirt, i) => {
@@ -20,7 +20,6 @@ const AllProducts = async ({ href }: { href: string }) => {
               buttonText="Buy Now"
               imageUrl=""
               tag={shirt.tag}
-              href={href}
             />
           </li>
         );
