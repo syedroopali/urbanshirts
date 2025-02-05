@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 import { LoaderCircle } from "lucide-react";
 import { signIn } from "next-auth/react";
-import { title } from "process";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const SignInBtn = () => {
   const [loading, setLoading] = useState(false);
@@ -17,11 +16,13 @@ const SignInBtn = () => {
       toast({
         title: "Login Successfully",
       });
-    } catch (error) {
-      toast({
-        title: "Unable to Login",
-        description: error.message,
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          title: "Unable to Login",
+          description: error.message,
+        });
+      }
     } finally {
       setLoading(false);
     }

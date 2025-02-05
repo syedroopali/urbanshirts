@@ -2,7 +2,6 @@ import dbConnect from "@/database/dbConnect";
 import Product from "@/database/models/porduct.model";
 import React from "react";
 import CustomCard from "./Card";
-import { STATUS_CODES } from "http";
 
 const AllProducts = async () => {
   await dbConnect();
@@ -18,7 +17,7 @@ const AllProducts = async () => {
               title={shirt.name}
               description={shirt.description}
               buttonText="Buy Now"
-              imageUrl=""
+              // imageUrl=""
               tag={shirt.tag}
             />
           </li>

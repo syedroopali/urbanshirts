@@ -3,8 +3,9 @@ import AllProducts from "@/components/AllProducts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Product from "@/database/models/porduct.model";
+import { PageProps } from "@/.next/types/app/page";
 
-const ProductPage = async ({ params }: { params: { id: string } }) => {
+const ProductPage = async ({ params }: PageProps) => {
   const { id } = await params;
   const product = await Product.findOne({ _id: id });
 

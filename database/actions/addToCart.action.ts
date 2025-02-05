@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 import dbConnect from "../dbConnect";
 import User from "../models/user.model";
 
-export async function AddToCart(params) {
+export async function AddToCart(params: string) {
   const id = await params;
 
   const session = await auth();
@@ -18,8 +18,10 @@ export async function AddToCart(params) {
       { email: session.user.email },
       { $push: { cart: id } }
     );
-  } catch (error) {
-    throw new Error(error.message);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    }
   }
 
   return { success: true };

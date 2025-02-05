@@ -17,12 +17,14 @@ const AddToCartBtn = ({ id }: { id: string }) => {
       } else {
         throw new Error("unable to add");
       }
-    } catch (error) {
-      toast({
-        title: error.message,
-        description: "Unable to Add Item",
-        variant: "destructive",
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          title: error.message,
+          description: "Unable to Add Item",
+          variant: "destructive",
+        });
+      }
     }
   };
 

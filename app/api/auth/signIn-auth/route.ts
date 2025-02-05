@@ -34,9 +34,11 @@ export async function POST(request: NextRequest) {
     });
     await session.commitTransaction();
     return NextResponse.json({ success: true });
-  } catch (error) {
-    await session.abortTransaction();
-    return NextResponse.json({ error: error.message });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      await session.abortTransaction();
+      return NextResponse.json({ error: error.message });
+    }
   } finally {
     await session.endSession();
   }

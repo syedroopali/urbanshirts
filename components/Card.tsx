@@ -1,12 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 
 type CardProps = {
   title: string;
   description: string;
-  imageUrl: string;
+  // imageUrl: string;
   buttonText: string;
   tag: string;
   id: string;
@@ -15,7 +13,7 @@ type CardProps = {
 const CustomCard: React.FC<CardProps> = ({
   title,
   description,
-  imageUrl,
+  // imageUrl,
   buttonText,
   tag,
   id,

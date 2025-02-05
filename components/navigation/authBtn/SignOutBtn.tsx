@@ -16,11 +16,13 @@ const SignOutBtn = () => {
       toast({
         title: "Logout Successfully",
       });
-    } catch (error) {
-      toast({
-        title: "Unable to Logout",
-        description: error.message,
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          title: "Unable to Logout",
+          description: error.message,
+        });
+      }
     } finally {
       setLoading(false);
     }

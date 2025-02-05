@@ -1,13 +1,13 @@
 "use client";
-import React from "react";
-import { NextPageContext } from "next";
 import { Button } from "@/components/ui/button";
+import { NextPageContext } from "next";
 import { useRouter } from "next/navigation";
+
 interface ErrorProps {
   statusCode: number;
   message: string;
 }
-const ErrorPage: React.FC<ErrorProps> = ({ statusCode, message }) => {
+const ErrorPage = ({ statusCode, message }: ErrorProps) => {
   const router = useRouter();
   const handleSubmit = () => {
     router.push("/");
