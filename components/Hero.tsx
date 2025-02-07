@@ -16,9 +16,9 @@ const Hero = () => {
       <section className="relative w-full h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 px-6 py-10 sm:py-16 md:py-20">
         <div className="container mx-auto flex flex-col lg:flex-row items-center text-center lg:text-left gap-10 px-4 sm:px-8 md:px-12">
           <div className="max-w-2xl space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 leading-10 ">
               Discover the Best Deals on{" "}
-              <span className="text-yellow-500 dark:text-yellow-400">
+              <span className="text-yellow-300 dark:text-yellow-400 bg-black/90 px-2 rounded-lg">
                 Quality Products
               </span>
             </h1>
