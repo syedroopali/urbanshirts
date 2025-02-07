@@ -1,12 +1,11 @@
 import { auth } from "@/auth";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import NotLoginToast from "../NotLoginToast";
+import SearchBar from "../SearchBar";
+import { ModeToggle } from "../themeToggle";
 import AuthAvtar from "./AuthAvtar";
 import SignInBtn from "./authBtn/SignInBtn";
 import SignOutBtn from "./authBtn/SignOutBtn";
-import { ModeToggle } from "../themeToggle";
-import SearchBar from "../SearchBar";
 
 const NavBar = async () => {
   const session = await auth();
