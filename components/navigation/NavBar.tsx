@@ -6,6 +6,7 @@ import AuthAvtar from "./AuthAvtar";
 import SignInBtn from "./authBtn/SignInBtn";
 import SignOutBtn from "./authBtn/SignOutBtn";
 import { ModeToggle } from "../themeToggle";
+import SearchBar from "../SearchBar";
 
 const NavBar = async () => {
   const session = await auth();
@@ -24,10 +25,7 @@ const NavBar = async () => {
 
       {/* Search Bar */}
       <div className="hidden md:flex w-1/3">
-        <Input
-          placeholder="Search..."
-          className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2"
-        />
+        <SearchBar />
       </div>
 
       {/* Right Section */}
