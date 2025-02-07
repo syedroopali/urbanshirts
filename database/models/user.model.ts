@@ -5,6 +5,7 @@ export interface IUser {
   email: string;
   image: string;
   cart: string[];
+  isAdmin: boolean;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -13,6 +14,7 @@ const UserSchema = new Schema<IUser>(
     email: { type: String, required: true, unique: true },
     image: { type: String },
     cart: { type: [String] },
+    isAdmin: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
