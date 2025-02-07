@@ -9,7 +9,7 @@ const AuthAvtar = ({ image }: { image: string }) => {
         image === "/user.png" ? "w-7 h-7" : "w-9 h-9"
       } dark:bg-white`}
     >
-      <AvatarImage src={image} />
+      <AvatarImage src={image} alt="Profile image" />
       <AvatarFallback>User</AvatarFallback>
     </Avatar>
   );

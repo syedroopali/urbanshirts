@@ -28,7 +28,8 @@ const Hero = () => {
             </p>
             <div className="mt-6 flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
               <Button
-                className="px-6 sm:px-8 py-3 text-lg bg-yellow-500 dark:bg-yellow-400 hover:bg-yellow-600 dark:hover:bg-yellow-500 text-white font-semibold rounded-lg shadow-md m-auto"
+                className="px-6 sm:px-8 py-3 text-lg font-semibold rounded-lg shadow-md m-auto"
+                variant="default"
                 onClickCapture={handleClick}
               >
                 Shop Now

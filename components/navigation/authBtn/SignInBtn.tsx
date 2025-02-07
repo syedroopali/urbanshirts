@@ -8,13 +8,12 @@ import { useState } from "react";
 
 const SignInBtn = () => {
   const [loading, setLoading] = useState(false);
-
   const handleSubmit = async () => {
     try {
       setLoading(true);
       await signIn("google", { redirect: false });
       toast({
-        title: "Login Successfully",
+        title: "Login successfuly",
       });
     } catch (error: unknown) {
       if (error instanceof Error) {

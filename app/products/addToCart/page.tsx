@@ -4,52 +4,58 @@ import { RemoveFromCart } from "@/database/actions/removeFromCart.action";
 import Product from "@/database/models/porduct.model";
 import User from "@/database/models/user.model";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function CartPage() {
   const session = await auth();
   if (!session) {
-    return;
+    redirect("/");
   }
+
   const user = await User.findOne({ email: session?.user?.email });
-  const cartId = user.cart;
-  const cart = await Product.find({ _id: cartId });
-  const totalPrice = cart.reduce((preV, curV) => (preV += curV.price), 0);
+  const cartIds = user.cart; // Assuming this is an array of product IDs
+  const cart = await Product.find({ _id: { $in: cartIds } }); // Fetch multiple products
+
+  const totalPrice = cart.reduce((preV, curV) => preV + curV.price, 0);
+
   return (
-    <div className="container mx-auto p-8 w-[50%] ">
+    <div className="container mx-auto px-4 py-8 lg:w-1/2">
       <h1 className="text-3xl font-bold mb-6">Shopping Cart</h1>
+
       {cart.length === 0 ? (
-        <p className="text-gray-600">Your cart is empty.</p>
+        <p className="text-gray-600 text-center">Your cart is empty.</p>
       ) : (
-        <div className="p-4 border rounded-md">
-          <ul>
-            {cart.map((item, index) => (
+        <div className="p-4 border rounded-md shadow-md">
+          <ul className="space-y-4">
+            {cart.map((item) => (
               <li
-                key={index}
-                className="flex justify-between items-center border-b p-2"
+                key={item._id.toString()}
+                className="flex flex-col sm:flex-row justify-between items-center border-b pb-2"
               >
-                <span>
+                <span className="text-lg font-medium">
                   {item.name} - Rs: {item.price.toFixed(2)}
                 </span>
-                <form action={RemoveFromCart}>
-                  <input
-                    readOnly
-                    hidden
-                    placeholder="id"
-                    name="id"
-                    value={item._id.toString()}
-                  />
-                  <Button variant="destructive">Remove</Button>
+                <form action={RemoveFromCart} className="mt-2 sm:mt-0">
+                  <input type="hidden" name="id" value={item._id.toString()} />
+                  <Button variant="destructive" size="sm">
+                    Remove
+                  </Button>
                 </form>
               </li>
             ))}
           </ul>
-          <div className="mt-4 text-lg font-semibold">
+
+          <div className="mt-6 text-xl font-semibold text-center sm:text-right">
             Total: Rs: {totalPrice.toFixed(2)}
           </div>
-          <Button className="mt-4 w-full">Proceed to Checkout</Button>
+
+          <Button className="mt-4 w-full sm:w-auto mx-auto block">
+            Proceed to Checkout
+          </Button>
         </div>
       )}
-      <div className="mt-6">
+
+      <div className="mt-6 text-center">
         <Link href="/">
           <Button variant="outline">Continue Shopping</Button>
         </Link>

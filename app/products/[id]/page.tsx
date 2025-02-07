@@ -10,7 +10,7 @@ const ProductPage = async ({ params }: PageProps) => {
   const product = await Product.findOne({ _id: id });
 
   return (
-    <section className="container mx-auto px-6 py-10">
+    <section className="container mx-auto px-1 sm:px-6 py-10">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
         {/* Product Details Section */}
         <div className="lg:col-span-2 flex flex-col md:flex-row">
@@ -26,7 +26,7 @@ const ProductPage = async ({ params }: PageProps) => {
           </div>
 
           {/* Product Details */}
-          <Card className="w-full md:w-1/2 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+          <Card className="w-full md:w-1/2 p-1 sm:p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
             <CardHeader>
               <CardTitle className="text-3xl font-bold text-gray-900 dark:text-white">
                 {product.name}

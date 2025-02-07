@@ -7,6 +7,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user, account, profile }) {
       const res = await fetch(
         "https://urbanshirts.vercel.app/api/auth/signIn-auth",
+        // "http://localhost:3000/api/auth/signIn-auth",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

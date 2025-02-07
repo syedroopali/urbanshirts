@@ -1,12 +1,13 @@
-import React, { ReactNode } from "react";
-import { ThemeProvider } from "@/components/theme-provider";
-import "./globals.css";
-import NavBar from "@/components/navigation/NavBar";
 import { auth } from "@/auth";
-import { SessionProvider } from "next-auth/react";
-import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/Footer";
+import NavBar from "@/components/navigation/NavBar";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
+import { SessionProvider } from "next-auth/react";
+import { ReactNode } from "react";
+import "./globals.css";
 
+import { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
@@ -14,6 +15,11 @@ const roboto = Roboto({
   display: "swap",
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: "Urban Shirts",
+  description: "A Leading Branch of best quality Shirts",
+};
 
 const layout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();

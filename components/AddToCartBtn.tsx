@@ -30,7 +30,7 @@ const AddToCartBtn = ({ id }: { id: string }) => {
 
   return (
     <>
-      <div className="flex gap-4 items-center justify-between">
+      <div className="flex gap-4 items-center justify-between flex-col sm:flex-row">
         <Button
           className="mt-4 w-full bg-black hover:bg-gray-800 transition-all duration-150 text-md"
           onClickCapture={handleSubmit}
