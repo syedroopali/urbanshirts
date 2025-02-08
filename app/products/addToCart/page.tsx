@@ -49,9 +49,12 @@ export default async function CartPage() {
             Total: Rs: {totalPrice.toFixed(2)}
           </div>
 
-          <Button className="mt-4 w-full sm:w-auto mx-auto block">
+          <Link
+            href="/products/order"
+            className="bg-black text-white rounded-lg px-2 py-2 w-fit mt-4"
+          >
             Proceed to Checkout
-          </Button>
+          </Link>
         </div>
       )}
 

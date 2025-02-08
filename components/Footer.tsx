@@ -14,8 +14,8 @@ const Footer = () => {
           <nav className="mt-4 sm:mt-0">
             <ul className="flex space-x-6">
               <li>
-                <Link href="/about" className="hover:underline">
-                  About
+                <Link href="/admin" className="hover:underline">
+                  Admin
                 </Link>
               </li>
               <li>
