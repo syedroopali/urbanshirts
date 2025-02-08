@@ -5,7 +5,7 @@ import CustomCard from "./Card";
 
 const AllProducts = async () => {
   await dbConnect();
-  const products = await Product.find();
+  const products = await Product.find().sort({ createdAt: -1 });
   return (
     <ul className="w-full flex gap-10 flex-wrap items-center justify-center ">
       {products.map((shirt, i) => {
