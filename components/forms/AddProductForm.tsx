@@ -93,7 +93,6 @@ export function AddProductForm() {
         <Button
           type="submit"
           className="w-full text-lg font-semibold py-3 rounded-lg transition-all duration-300"
-          disabled={isPending}
         >
           Submit
         </Button>
