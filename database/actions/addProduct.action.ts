@@ -5,7 +5,14 @@ import dbConnect from "../dbConnect";
 import mongoose from "mongoose";
 import Product, { IProduct } from "../models/porduct.model";
 
-export async function AddProduct(params: { params: IProduct }) {
+export async function AddProduct(params: {
+  name: string;
+  price: string;
+  description: string;
+  detail: string;
+  tag: string;
+  imageUrl: string;
+}) {
   const data = await params;
   const validatedResult = ProductSchema.safeParse(data);
 

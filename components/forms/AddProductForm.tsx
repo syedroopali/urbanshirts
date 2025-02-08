@@ -17,11 +17,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { AddProduct } from "@/database/actions/addProduct.action";
 import { toast } from "@/hooks/use-toast";
-import { useTransition } from "react";
 
 export function AddProductForm() {
-  const [isPending, startTransition] = useTransition();
-
   const DefaultValues: z.infer<typeof ProductSchema> = {
     name: "",
     price: "",
@@ -38,24 +35,22 @@ export function AddProductForm() {
 
   async function onSubmit(values: z.infer<typeof ProductSchema>) {
     const res = await AddProduct(values);
-    startTransition(() => {
-      try {
-        if (res?.success) {
-          toast({
-            title: "Success",
-            description: "Product Added successfully",
-          });
-        }
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          toast({
-            title: "Error",
-            description: error.message,
-            variant: "destructive",
-          });
-        }
+    try {
+      if (res?.success) {
+        toast({
+          title: "Success",
+          description: "Product Added successfully",
+        });
       }
-    });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+      }
+    }
   }
 
   return (
