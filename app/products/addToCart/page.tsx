@@ -48,13 +48,14 @@ export default async function CartPage() {
           <div className="mt-6 text-xl font-semibold text-center sm:text-right">
             Total: Rs: {totalPrice.toFixed(2)}
           </div>
-
-          <Link
-            href="/products/order"
-            className="bg-black text-white rounded-lg px-2 py-2 w-fit mt-4"
-          >
-            Proceed to Checkout
-          </Link>
+          <div className="flex items-center justify-center">
+            <Link
+              href="/products/order"
+              className="bg-black text-white rounded-lg px-3 py-2 w-fit mt-4 block shadow-sm hover:bg-gray-800 dark:bg-white dark:text-black hover:dark:bg-gray-200"
+            >
+              Proceed to Checkout
+            </Link>
+          </div>
         </div>
       )}
 
